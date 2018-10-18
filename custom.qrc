@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Custom/CustomProgressBar.qml</file>
+    </qresource>
+</RCC>
