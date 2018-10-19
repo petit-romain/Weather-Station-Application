@@ -1,8 +1,9 @@
 import QtQuick 2.11
 import QtQuick.Controls 2.4
+import QtQuick.Layouts 1.3
 import QtQuick.Window 2.11
-
-//Splashscreen {}
+import QtGraphicalEffects 1.0
+import "./Fonts"
 
 Item {
     visible: false
@@ -16,18 +17,14 @@ Item {
         width: 1280
         height: 720
         title: "Weather Station"
+        color: "black"
 
-        Rectangle {
-            x: -border.width
-            width: parent.width + 2 * border.width
-            height: 0.05 * parent.height
-            border.width: 1
+        FontSettings { id: fontStgs }
 
-            Text {
-                anchors.centerIn: parent
-                text: informations.currentDate
-                font.pixelSize: 21
-            }
-        }
+        RainfallWind { id: rainFallWind }
+
+        Current { id: current }
+
+        Week { id: week }
     }
 }
