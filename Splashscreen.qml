@@ -25,6 +25,7 @@ Window {
         onTriggered: {
             wdwSplashScreen.visible = false
             mainWindow.visible = true
+            week.timerUpdate.running = true
         }
     }
 
