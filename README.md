@@ -4,7 +4,7 @@ Weather station application, developped with the Qt Framework, collects weather 
 
 ## System schema
 
-![Application Display](./Explication/Schema.png =100x70)
+<img src="./Explication/Schema.png" alt="System Schema" width="300" height="150"/>
 
 ## Hardware
 
@@ -20,6 +20,8 @@ Weather station application, developped with the Qt Framework, collects weather 
 
 ### Application (Qt Framework)
 
-![Application Display](./Explication/Display.png =100x70)
+
+
+<img src="./Explication/Display.png" alt="Application Display" width="700" height="370"/>
 
 ### Server (Django REST Framework)
