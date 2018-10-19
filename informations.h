@@ -2,8 +2,10 @@
 #define INFORMATIONS_H
 
 #include <QObject>
+#include <QTimer>
 #include <QList>
 #include <QDateTime>
+#include <QLocale>
 #include <QDebug>
 
 class Informations : public QObject
@@ -16,7 +18,9 @@ class Informations : public QObject
     Q_PROPERTY(QList<QVariant> humidities       READ getHumidities          NOTIFY informationsChanged)
     Q_PROPERTY(QList<QVariant> pressures        READ getPressures           NOTIFY informationsChanged)
     Q_PROPERTY(QList<QVariant> climates         READ getClimates            NOTIFY informationsChanged)
-    Q_PROPERTY(QVariant currentDate             READ getCurrentDate         NOTIFY informationsChanged)
+    Q_PROPERTY(QList<QVariant> currentWeek      READ getCurrentWeek         NOTIFY informationsChanged)
+    Q_PROPERTY(QVariant currentDate             READ getCurrentDate         NOTIFY currentDateTimeChanged)
+    Q_PROPERTY(QVariant currentTime             READ getCurrentTime         NOTIFY currentDateTimeChanged)
     Q_PROPERTY(QVariant currentSunrise          READ getCurrentSunrise      NOTIFY informationsChanged)
     Q_PROPERTY(QVariant currentSunset           READ getCurrentSunset       NOTIFY informationsChanged)
     Q_PROPERTY(QVariant rainFallHour            READ getRainFallHour        NOTIFY informationsChanged)
@@ -25,12 +29,15 @@ class Informations : public QObject
 
 private:
     QList<QVariant> m_windVelocities, m_rainFalls, m_temperatures, m_humidities, m_pressures, m_climates;
-    QVariant m_currentDate, m_currentSunrise, m_currentSunset, m_rainFallHour, m_rainFallDay, m_outdoorTemperature;
+    QTimer * m_timerDate;
+    QVariant m_currentDate, m_currentSunrise, m_currentSunset, m_rainFallHour, m_rainFallDay, m_outdoorTemperature, m_windDirection;
 
 public:
     Informations();
 
+    QList<QVariant> getCurrentWeek() const;
     QVariant getCurrentDate() const;
+    QVariant getCurrentTime() const;
 
     QVariant getCurrentSunrise() const { return this->m_currentSunrise; }
     void setCurrentSunrise(QString _currentSunrise) { this->m_currentSunrise = QVariant(_currentSunrise); }
@@ -65,8 +72,12 @@ public:
     QList<QVariant> getClimates() const { return this->m_climates; }
     void setClimates(QList<QVariant> _climates) { this->m_climates = _climates; }
 
+public slots:
+    Q_SLOT void onTimeoutDate();
+
 signals:
     Q_SIGNAL void informationsChanged();
+    Q_SIGNAL void currentDateTimeChanged();
 };
 
 #endif // INFORMATIONS_H
