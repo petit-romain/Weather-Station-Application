@@ -2,6 +2,13 @@
 
 Informations::Informations()
 {
+    this->m_windVelocities << QVariant(0.0) << QVariant(0.0) << QVariant(0.0)
+                           << QVariant(0.0) << QVariant(0.0) << QVariant(0.0) << QVariant(0.0);
+    this->m_humidities = this->m_pressures = this->m_temperatures = this->m_windVelocities;
+    this->m_climates << QVariant(-23.7) << QVariant(-23.7) << QVariant(-23.7)
+                     << QVariant(-23.7) << QVariant(-23.7) << QVariant(-23.7) << QVariant(-23.7);
+    this->m_rainFallHour = this->m_rainFallDay = this->m_outdoorTemperature = this->m_windDirection = QVariant(0.0);
+    this->m_currentSunrise = this->m_currentSunset = QVariant("00:00");
 
     this->m_timerDate = new QTimer(this);
     this->m_timerDate->start(1000);

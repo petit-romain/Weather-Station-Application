@@ -13,7 +13,6 @@ class Informations : public QObject
     Q_OBJECT
     Q_ENUMS(Weather)
     Q_PROPERTY(QList<QVariant> windVelocities   READ getWindVelocities      NOTIFY informationsChanged)
-    Q_PROPERTY(QList<QVariant> rainFalls        READ getRainFalls           NOTIFY informationsChanged)
     Q_PROPERTY(QList<QVariant> temperatures     READ getTemperatures        NOTIFY informationsChanged)
     Q_PROPERTY(QList<QVariant> humidities       READ getHumidities          NOTIFY informationsChanged)
     Q_PROPERTY(QList<QVariant> pressures        READ getPressures           NOTIFY informationsChanged)
@@ -26,10 +25,11 @@ class Informations : public QObject
     Q_PROPERTY(QVariant rainFallHour            READ getRainFallHour        NOTIFY informationsChanged)
     Q_PROPERTY(QVariant rainFallDay             READ getRainFallDay         NOTIFY informationsChanged)
     Q_PROPERTY(QVariant outdoorTemperature      READ getOutdoorTemperature  NOTIFY informationsChanged)
+    Q_PROPERTY(QVariant windDirection           READ getWindDirection       NOTIFY informationsChanged)
 
 private:
-    QList<QVariant> m_windVelocities, m_rainFalls, m_temperatures, m_humidities, m_pressures, m_climates;
     QTimer * m_timerDate;
+    QList<QVariant> m_windVelocities, m_temperatures, m_humidities, m_pressures, m_climates;
     QVariant m_currentDate, m_currentSunrise, m_currentSunset, m_rainFallHour, m_rainFallDay, m_outdoorTemperature, m_windDirection;
 
 public:
@@ -49,16 +49,16 @@ public:
     void setRainFallHour(double _rainFallHour) { this->m_rainFallHour = QVariant(_rainFallHour); }
 
     QVariant getRainFallDay() const { return this->m_rainFallDay; }
-    void setRainFallDay(double _rainFallDay) { this->m_rainFallDay = QVariant(_rainFallDay); };
+    void setRainFallDay(double _rainFallDay) { this->m_rainFallDay = QVariant(_rainFallDay); }
 
     QVariant getOutdoorTemperature() const { return this->m_outdoorTemperature; }
     void setOutdoorTemperature(double _outdoorTemp) { this->m_outdoorTemperature = QVariant(_outdoorTemp); }
 
-    QList<QVariant> getWindVelocities() const { return this->m_windVelocities; }
-    void setWindVelocities(QList<QVariant> _windVelocities) { this->m_windVelocities = _windVelocities; };
+    QVariant getWindDirection() const { return this->m_windDirection; }
+    void setWindDirection(double _windDirection) { this->m_windDirection = QVariant(_windDirection); }
 
-    QList<QVariant> getRainFalls() const { return this->m_rainFalls; }
-    void setRainFalls(QList<QVariant> _rainFalls) { this->m_rainFalls = _rainFalls; }
+    QList<QVariant> getWindVelocities() const { return this->m_windVelocities; }
+    void setWindVelocities(QList<QVariant> _windVelocities) { this->m_windVelocities = _windVelocities; }
 
     QList<QVariant> getTemperatures() const { return this->m_temperatures; }
     void setTemperatures(QList<QVariant> _temperatures) { this->m_temperatures = _temperatures; }
