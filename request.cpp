@@ -64,10 +64,11 @@ void Request::processingInformations(QByteArray _jsonData)
     this->m_informations->setTemperatures(variantMap.value("temperatures").toList());
     this->m_informations->setHumidities(variantMap.value("humidities").toList());
     this->m_informations->setPressures(variantMap.value("pressures").toList());
-    this->m_informations->setRainFalls(variantMap.value("rainfalls").toList());
+    this->m_informations->setClimates(variantMap.value("climates").toList());
     this->m_informations->setRainFallHour(jsonObject.value("rainfallhour").toDouble());
     this->m_informations->setRainFallDay(jsonObject.value("rainfallday").toDouble());
     this->m_informations->setOutdoorTemperature(jsonObject.value("outdoortemp").toDouble());
+    this->m_informations->setWindDirection(jsonObject.value("winddirection").toDouble());
 
     Q_EMIT this->m_informations->informationsChanged();
 }
