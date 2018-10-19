@@ -19,6 +19,8 @@ Request::Request()
     connect(this->m_manager, &QNetworkAccessManager::finished, this, &Request::replyFinished);
 
     connect(this->m_timerRequest, &QTimer::timeout, this, &Request::onTimeoutRequest);
+
+    Q_EMIT this->onTimeoutRequest();
 }
 
 void Request::processingSunriseSunset(QByteArray _jsonData)
@@ -85,6 +87,4 @@ void Request::onTimeoutRequest()
 
     this->m_request->setUrl(this->m_urlRpiServer);
     this->m_reply = this->m_manager->get(*this->m_request);
-
-    this->m_timerRequest->stop();
 }
