@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Splashscreen.qml</file>
+        <file>Current.qml</file>
+        <file>RainfallWind.qml</file>
+        <file>Week.qml</file>
     </qresource>
 </RCC>

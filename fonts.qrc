@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Fonts/digital-7.ttf</file>
+        <file>Fonts/FontSettings.qml</file>
+    </qresource>
+</RCC>
