@@ -51,7 +51,7 @@ void Request::processingInformations(QByteArray _jsonData)
     jsonDataFile.write(_jsonData);
     jsonDataFile.close();*/
 
-    QFile jsonDataFile("../01_Project/Data/data.json");
+    QFile jsonDataFile("../Weather-Station-Application/Data/data.json");
     jsonDataFile.open(QIODevice::ReadOnly);
     QByteArray jsonData = jsonDataFile.readAll();
     jsonDataFile.close();
